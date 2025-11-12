@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team AXORN - Apply</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/apply.css">
+</head>
+<body>
+    <!-- Header Component -->
+    <div id="header"></div>
+
+    <main class="main-content">
+        <div class="apply-container">
+            <div class="apply-header">
+                <div class="stamp">
+                    <div class="stamp-inner">
+                        <span>TEAM AXORN</span>
+                        <span>OFFICIAL STAMP</span>
+                    </div>
+                </div>
+                <h1>Application Form</h1>
+                <p>Join the elite Team AXORN community</p>
+            </div>
+
+            <form id="applyForm" class="apply-form">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <input type="text" id="applicantName" required>
+                        <label for="applicantName">Full Name</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <select id="banningYear" required>
+                            <option value="">Select Year</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                        </select>
+                        <label for="banningYear">Year Started Banning</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="text" id="igUsername" required>
+                        <label for="igUsername">Instagram Username</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="url" id="igLink" required>
+                        <label for="igLink">Instagram Profile Link</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="text" id="tgUsername">
+                        <label for="tgUsername">Telegram Username (Optional)</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="text" id="tgId">
+                        <label for="tgId">Telegram Chat ID (Optional)</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="tel" id="phoneNumber" required>
+                        <label for="phoneNumber">Phone Number</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary apply-btn">Submit Application</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Application Card Modal -->
+    <div id="applicationModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="application-card">
+                <div class="card-header">
+                    <div class="stamp-small">
+                        <span>TEAM AXORN</span>
+                    </div>
+                    <h2>Membership Card</h2>
+                </div>
+                
+                <div class="card-body">
+                    <div class="card-info">
+                        <div class="info-row">
+                            <span class="label">Name:</span>
+                            <span id="cardName" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Username:</span>
+                            <span id="cardUsername" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Join Date:</span>
+                            <span id="cardJoinDate" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Banning Since:</span>
+                            <span id="cardBanningYear" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Instagram:</span>
+                            <span id="cardIgUsername" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Telegram:</span>
+                            <span id="cardTgUsername" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Phone:</span>
+                            <span id="cardPhone" class="value"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-footer">
+                    <div class="watermark">By Team AXORN Owner Krsxh</div>
+                    <button id="downloadCard" class="btn btn-secondary">Download Card</button>
+                    <button id="goToHome" class="btn btn-primary">Go to Home</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/apply.js"></script>
+    <script>
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
+</body>
+</html>
