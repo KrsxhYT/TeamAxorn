@@ -2,61 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEAM AXORN - Login</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="auth-page">
-    <div class="auth-container">
-        <div class="auth-header">
-            <h1 class="logo">TEAM AXORN</h1>
-            <p class="tagline">Join the community</p>
-        </div>
-        
-        <div class="auth-tabs">
-            <button class="tab-btn active" id="login-tab">Login</button>
-            <button class="tab-btn" id="signup-tab">Sign Up</button>
-        </div>
-        
-        <form id="login-form" class="auth-form active">
-            <div class="input-group">
-                <input type="email" id="login-email" required>
-                <label for="login-email">Email</label>
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="row full-height justify-content-center">
+                <div class="col-12 text-center align-self-center py-5">
+                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                        <h6 class="mb-0 pb-3"><span>Log In</span><span>Sign Up</span></h6>
+                        <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                        <label for="reg-log"></label>
+                        <div class="card-3d-wrap mx-auto">
+                            <div class="card-3d-wrapper">
+                                <!-- Login Form -->
+                                <div class="card-front">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">Log In</h4>
+                                            <div class="form-group">
+                                                <input type="email" class="form-style" placeholder="Your Email" id="login-email" autocomplete="off">
+                                                <i class="input-icon uil uil-at"></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="password" class="form-style" placeholder="Your Password" id="login-password" autocomplete="off">
+                                                <i class="input-icon uil uil-lock-alt"></i>
+                                            </div>
+                                            <button class="btn mt-4" onclick="login()">Login</button>
+                                            <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Sign Up Form -->
+                                <div class="card-back">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">Sign Up</h4>
+                                            <div class="form-group">
+                                                <input type="text" class="form-style" placeholder="Your Full Name" id="signup-name" autocomplete="off">
+                                                <i class="input-icon uil uil-user"></i>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-style" placeholder="Your Username" id="signup-username" autocomplete="off">
+                                                <i class="input-icon uil uil-user-circle"></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="email" class="form-style" placeholder="Your Email" id="signup-email" autocomplete="off">
+                                                <i class="input-icon uil uil-at"></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="password" class="form-style" placeholder="Your Password" id="signup-password" autocomplete="off">
+                                                <i class="input-icon uil uil-lock-alt"></i>
+                                            </div>
+                                            <button class="btn mt-4" onclick="signup()">Sign Up</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="input-group">
-                <input type="password" id="login-password" required>
-                <label for="login-password">Password</label>
-            </div>
-            <button type="submit" class="btn-primary">Login</button>
-        </form>
-        
-        <form id="signup-form" class="auth-form">
-            <div class="input-group">
-                <input type="text" id="signup-name" required>
-                <label for="signup-name">Full Name</label>
-            </div>
-            <div class="input-group">
-                <input type="text" id="signup-username" required>
-                <label for="signup-username">Username</label>
-            </div>
-            <div class="input-group">
-                <input type="email" id="signup-email" required>
-                <label for="signup-email">Email</label>
-            </div>
-            <div class="input-group">
-                <input type="password" id="signup-password" required>
-                <label for="signup-password">Password</label>
-            </div>
-            <button type="submit" class="btn-primary">Sign Up</button>
-        </form>
-        
-        <div class="auth-footer">
-            <p>By continuing, you agree to our <a href="legal.html">Terms & Conditions</a></p>
         </div>
     </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     
-    <script src="js/db.js"></script>
-    <script src="js/auth.js"></script>
+    <script src="./js/db.js"></script>
+    <script src="./js/auth.js"></script>
 </body>
 </html>
