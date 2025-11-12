@@ -32,9 +32,6 @@ function initializeApp() {
     
     // Update member counts
     updateMemberCounts();
-    
-    // Check authentication state
-    checkAuthState();
 }
 
 function updateMemberCounts() {
@@ -47,16 +44,10 @@ function updateMemberCounts() {
         // Update all total member counters
         const totalMemberElements = document.querySelectorAll('#total-members, #total-members-count');
         totalMemberElements.forEach(element => {
-            element.textContent = totalMembers;
+            if (element) {
+                element.textContent = totalMembers;
+            }
         });
-    });
-}
-
-function checkAuthState() {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (!user && !window.location.pathname.endsWith('index.html')) {
-            window.location.href = 'index.html';
-        }
     });
 }
 
@@ -83,13 +74,4 @@ function getTimeAgo(timestamp) {
     if (hours > 0) return hours + ' hour' + (hours > 1 ? 's' : '') + ' ago';
     if (minutes > 0) return minutes + ' minute' + (minutes > 1 ? 's' : '') + ' ago';
     return 'Just now';
-}
-
-// Export functions for use in other files
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        formatNumber,
-        getTimeAgo,
-        updateMemberCounts
-    };
 }
