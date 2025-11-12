@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM AXORN - Members</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header class="main-header">
+        <button class="menu-btn" onclick="history.back()">←</button>
+        <h1 class="logo">TEAM AXORN</h1>
+        <div class="header-placeholder"></div>
+    </header>
+
+    <main class="main-content">
+        <div class="members-header">
+            <h2 class="page-title">TEAM AXORN Members</h2>
+            <div class="members-stats">
+                Total: <span id="total-members">20</span> Members
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="member-search" class="search-input" placeholder="Search members...">
+        </div>
+
+        <div class="admins-section">
+            <h3 class="section-title">Administrators</h3>
+            <div class="members-grid" id="admins-grid">
+                <!-- Admins will be loaded here -->
+            </div>
+        </div>
+
+        <div class="members-section">
+            <h3 class="section-title">Team Members</h3>
+            <div class="members-grid" id="members-grid">
+                <!-- Members will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Member Profile Modal -->
+    <div class="modal" id="member-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="member-close">×</button>
+            <div id="member-modal-content">
+                <!-- Member details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="updates.html" class="nav-item">
+            <span class="nav-icon">📢</span>
+            <span>Updates</span>
+        </a>
+        <a href="rules.html" class="nav-item">
+            <span class="nav-icon">📜</span>
+            <span>Rules</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>Profile</span>
+        </a>
+        <a href="members.html" class="nav-item active">
+            <span class="nav-icon">👥</span>
+            <span>Members</span>
+        </a>
+    </nav>
+
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMembers();
+        });
+        
+        function loadMembers() {
+            getAllUsers().then((snapshot) => {
+                const adminsGrid = document.getElementById('admins-grid');
+                const membersGrid = document.getElementById('members-grid');
+                
+                adminsGrid.innerHTML = '';
+                membersGrid.innerHTML = '';
+                
+                let totalMembers = 0;
+                
+                snapshot.forEach((childSnapshot) => {
+                    const user = childSnapshot.val();
+                    totalMembers++;
+                    
+                    const memberCard = createMemberCard(user);
+                    
+                    if (isAdmin(user.username)) {
+                        adminsGrid.appendChild(memberCard);
+                    } else {
+                        membersGrid.appendChild(memberCard);
+                    }
+                });
+                
+                document.getElementById('total-members').textContent = totalMembers;
+            });
+        }
+        
+        function createMemberCard(user) {
+            const card = document.createElement('div');
+            card.className = 'member-card';
+            card.onclick = () => showMemberDetails(user);
+            
+            const adminInfo = getAdminInfo(user.username);
+            const isVerified = adminInfo ? adminInfo.verified : false;
+            
+            card.innerHTML = `
+                <img src="${user.profilePic || 'assets/images/default-avatar.png'}" alt="${user.name}" class="member-avatar">
+                <div class="member-name">
+                    ${user.name}
+                    ${isVerified ? '<span class="verified-badge">✓</span>' : ''}
+                </div>
+                <div class="member-username">@${user.username}</div>
+                ${adminInfo ? `<div class="member-tag">${adminInfo.tag}</div>` : '<div class="member-tag">Member</div>'}
+            `;
+            
+            return card;
+        }
+        
+        function showMemberDetails(user) {
+            const adminInfo = getAdminInfo(user.username);
+            const modalContent = document.getElementById('member-modal-content');
+            
+            modalContent.innerHTML = `
+                <div class="member-details">
+                    <img src="${user.profilePic || 'assets/images/default-avatar.png'}" alt="${user.name}" class="detail-avatar">
+                    <h3>${user.name}</h3>
+                    <div class="detail-username">@${user.username}</div>
+                    ${adminInfo ? `<div class="detail-tag">${adminInfo.tag}</div>` : '<div class="detail-tag">Member of TEAM AXORN</div>'}
+                    
+                    <div class="detail-stats">
+                        <div class="stat">
+                            <div class="stat-value">${user.followers || 0}</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">${user.following || 0}</div>
+                            <div class="stat-label">Following</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-info">
+                        <div class="info-item">
+                            <span class="info-label">Email:</span>
+                            <span class="info-value">${user.email}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Member Since:</span>
+                            <span class="info-value">${new Date(user.createdAt).toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('member-modal').classList.add('active');
+        }
+        
+        // Close member modal
+        document.getElementById('member-close').addEventListener('click', function() {
+            document.getElementById('member-modal').classList.remove('active');
+        });
+        
+        // Search functionality
+        document.getElementById('member-search').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const memberCards = document.querySelectorAll('.member-card');
+            
+            memberCards.forEach(card => {
+                const name = card.querySelector('.member-name').textContent.toLowerCase();
+                const username = card.querySelector('.member-username').textContent.toLowerCase();
+                
+                if (name.includes(searchTerm) || username.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
