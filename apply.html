@@ -6,6 +6,9 @@
     <title>Team AXORN - Apply</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/apply.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header Component -->
@@ -13,78 +16,146 @@
 
     <main class="main-content">
         <div class="apply-container">
+            <!-- Application Header -->
             <div class="apply-header">
-                <div class="stamp">
-                    <div class="stamp-inner">
-                        <span>TEAM AXORN</span>
-                        <span>OFFICIAL STAMP</span>
+                <div class="stamp-container">
+                    <div class="official-stamp">
+                        <div class="stamp-inner">
+                            <div class="stamp-icon">⚡</div>
+                            <div class="stamp-text">
+                                <span class="stamp-main">TEAM AXORN</span>
+                                <span class="stamp-sub">OFFICIAL STAMP</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <h1>Application Form</h1>
-                <p>Join the elite Team AXORN community</p>
+                
+                <div class="apply-intro">
+                    <h1>Join Team AXORN</h1>
+                    <p class="intro-subtitle">Application Form</p>
+                    <p class="intro-description">
+                        Complete this form to apply for membership in Team AXORN. 
+                        Please provide accurate information as this will be verified by our team.
+                    </p>
+                </div>
             </div>
 
+            <!-- Application Status (if already applied) -->
+            <div id="applicationStatus" class="hidden">
+                <!-- Will be populated by JavaScript -->
+            </div>
+
+            <!-- Application Form -->
             <form id="applyForm" class="apply-form">
-                <div class="form-grid">
-                    <div class="input-group">
-                        <input type="text" id="applicantName" required>
-                        <label for="applicantName">Full Name</label>
-                    </div>
-                    
-                    <div class="input-group">
-                        <select id="banningYear" required>
-                            <option value="">Select Year</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                        </select>
-                        <label for="banningYear">Year Started Banning</label>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="text" id="igUsername" required>
-                        <label for="igUsername">Instagram Username</label>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="url" id="igLink" required>
-                        <label for="igLink">Instagram Profile Link</label>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="text" id="tgUsername">
-                        <label for="tgUsername">Telegram Username (Optional)</label>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="text" id="tgId">
-                        <label for="tgId">Telegram Chat ID (Optional)</label>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="tel" id="phoneNumber" required>
-                        <label for="phoneNumber">Phone Number</label>
+                <div class="form-section">
+                    <h3 class="section-title">Personal Information</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <input type="text" id="applicantName" required class="form-input">
+                            <label for="applicantName" class="form-label">Full Name</label>
+                            <div class="input-icon">👤</div>
+                            <div class="input-hint">Your complete name as per official records</div>
+                        </div>
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary apply-btn">Submit Application</button>
+                <div class="form-section">
+                    <h3 class="section-title">Experience & Background</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <select id="banningYear" required class="form-input">
+                                <option value="">Select Year</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
+                            <label for="banningYear" class="form-label">Year Started Banning</label>
+                            <div class="input-icon">📅</div>
+                            <div class="input-hint">The year you began your banning journey</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Social Profiles</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <input type="text" id="igUsername" required class="form-input">
+                            <label for="igUsername" class="form-label">Instagram Username</label>
+                            <div class="input-icon">📷</div>
+                            <div class="input-hint">Your Instagram handle without @</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="url" id="igLink" required class="form-input">
+                            <label for="igLink" class="form-label">Instagram Profile Link</label>
+                            <div class="input-icon">🔗</div>
+                            <div class="input-hint">Full URL to your Instagram profile</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Telegram (Optional)</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <input type="text" id="tgUsername" class="form-input">
+                            <label for="tgUsername" class="form-label">Telegram Username</label>
+                            <div class="input-icon">💬</div>
+                            <div class="input-hint">Your Telegram username</div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <input type="text" id="tgId" class="form-input">
+                            <label for="tgId" class="form-label">Telegram Chat ID</label>
+                            <div class="input-icon">🆔</div>
+                            <div class="input-hint">Your Telegram chat ID (optional)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Contact Information</h3>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <input type="tel" id="phoneNumber" required class="form-input">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <div class="input-icon">📱</div>
+                            <div class="input-hint">Your active phone number with country code</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                        ← Back
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Submit Application</span>
+                        <div class="btn-loader hidden"></div>
+                    </button>
+                </div>
             </form>
         </div>
     </main>
 
     <!-- Application Card Modal -->
     <div id="applicationModal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeApplicationModal()"></div>
         <div class="modal-content">
             <div class="application-card">
                 <div class="card-header">
-                    <div class="stamp-small">
+                    <div class="card-stamp">
                         <span>TEAM AXORN</span>
                     </div>
-                    <h2>Membership Card</h2>
+                    <div class="card-title">
+                        <h2>Membership Card</h2>
+                        <p class="card-subtitle">Application Submitted</p>
+                    </div>
                 </div>
                 
                 <div class="card-body">
@@ -122,16 +193,29 @@
                 
                 <div class="card-footer">
                     <div class="watermark">By Team AXORN Owner Krsxh</div>
-                    <button id="downloadCard" class="btn btn-secondary">Download Card</button>
-                    <button id="goToHome" class="btn btn-primary">Go to Home</button>
+                    <div class="card-actions">
+                        <button id="downloadCard" class="btn btn-secondary">
+                            📥 Download Card
+                        </button>
+                        <button id="goToHome" class="btn btn-primary">
+                            🏠 Go to Home
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Processing your application...</p>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/apply.js"></script>
     <script>
