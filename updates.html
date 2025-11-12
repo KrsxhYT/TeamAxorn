@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team AXORN - Updates</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/updates.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Component -->
+    <div id="header"></div>
+
+    <main class="main-content">
+        <div class="updates-container">
+            <!-- Admin Info Section -->
+            <div class="admin-info-card">
+                <div class="admin-avatar">
+                    <div class="avatar-icon">⚡</div>
+                </div>
+                <div class="admin-details">
+                    <h1>Team AXORN</h1>
+                    <div class="admin-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="totalMembersCount">20</span>
+                            <span class="stat-label">Total Members</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="onlineMembersCount">12</span>
+                            <span class="stat-label">Online Now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Update Form (Admin Only) -->
+            <div id="updateFormContainer" class="hidden">
+                <div class="update-form-card">
+                    <h3 class="form-title">Post New Update</h3>
+                    <form id="updateForm">
+                        <div class="input-group">
+                            <textarea id="updateMessage" rows="4" placeholder="Write your announcement..." required class="form-input"></textarea>
+                            <div class="input-hint">Markdown is supported</div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="clearUpdateForm()">
+                                Clear
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <span class="btn-text">Post Update</span>
+                                <div class="btn-loader hidden"></div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Updates List -->
+            <div class="updates-section">
+                <div class="section-header">
+                    <h2 class="section-title">Community Updates</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary btn-sm" onclick="refreshUpdates()">
+                            🔄 Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="updates-list" id="updatesList">
+                    <div class="loading-updates">
+                        <div class="loading-spinner"></div>
+                        <p>Loading updates...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Navigation Component -->
+    <div id="navigation"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/updates.js"></script>
+    <script>
+        Promise.all([
+            fetch('components/header.html').then(r => r.text()),
+            fetch('components/navigation.html').then(r => r.text())
+        ]).then(([header, navigation]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('navigation').innerHTML = navigation;
+        });
+    </script>
+</body>
+</html>
