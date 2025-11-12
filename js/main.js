@@ -32,6 +32,9 @@ function initializeApp() {
     
     // Update member counts
     updateMemberCounts();
+    
+    // Check if user is authenticated
+    checkAuth();
 }
 
 function updateMemberCounts() {
@@ -48,6 +51,16 @@ function updateMemberCounts() {
                 element.textContent = totalMembers;
             }
         });
+    }).catch(error => {
+        console.error("Error updating member counts:", error);
+    });
+}
+
+function checkAuth() {
+    auth.onAuthStateChanged((user) => {
+        if (!user && !window.location.pathname.endsWith('index.html')) {
+            window.location.href = 'index.html';
+        }
     });
 }
 
@@ -74,4 +87,13 @@ function getTimeAgo(timestamp) {
     if (hours > 0) return hours + ' hour' + (hours > 1 ? 's' : '') + ' ago';
     if (minutes > 0) return minutes + ' minute' + (minutes > 1 ? 's' : '') + ' ago';
     return 'Just now';
+}
+
+// Export for use in other files
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        formatNumber,
+        getTimeAgo,
+        updateMemberCounts
+    };
 }
