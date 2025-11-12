@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team AXORN - Home</title>
+    <title>Team AXORN - Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header Component -->
@@ -13,63 +16,156 @@
 
     <main class="main-content">
         <div class="dashboard">
-            <div class="welcome-section">
-                <h1>Welcome to Team AXORN</h1>
-                <p>Elite community of professionals</p>
-            </div>
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title" id="welcomeName">Welcome to Team AXORN</h1>
+                    <p class="welcome-subtitle">Elite community of professionals and innovators</p>
+                    <div class="welcome-stats">
+                        <div class="stat-badge">
+                            <span class="stat-icon">👥</span>
+                            <span class="stat-text" id="totalMembers">20+ Members</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="stat-icon">⚡</span>
+                            <span class="stat-text" id="onlineMembers">12 Online</span>
+                        </div>
+                        <div class="stat-badge">
+                            <span class="stat-icon">📢</span>
+                            <span class="stat-text" id="newUpdates">3 New Updates</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-graphic">
+                    <div class="graphic-icon">🚀</div>
+                </div>
+            </section>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>Total Members</h3>
-                    <p class="stat-number" id="totalMembers">20</p>
+            <!-- Quick Stats -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="statsTotalMembers">20</h3>
+                            <p class="stat-label">Total Members</p>
+                        </div>
+                        <div class="stat-trend up">+5%</div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="statsActiveMembers">15</h3>
+                            <p class="stat-label">Active Today</p>
+                        </div>
+                        <div class="stat-trend up">+12%</div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="statsPending">3</h3>
+                            <p class="stat-label">Pending Apps</p>
+                        </div>
+                        <div class="stat-trend down">-2%</div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <h3 class="stat-value" id="statsGrowth">98%</h3>
+                            <p class="stat-label">Growth Rate</p>
+                        </div>
+                        <div class="stat-trend up">+3%</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h3>Online Now</h3>
-                    <p class="stat-number" id="onlineMembers">12</p>
-                </div>
-                <div class="stat-card">
-                    <h3>New Updates</h3>
-                    <p class="stat-number" id="newUpdates">3</p>
-                </div>
-            </div>
+            </section>
 
-            <div class="quick-actions">
-                <h2>Quick Actions</h2>
-                <div class="action-grid">
+            <!-- Quick Actions -->
+            <section class="actions-section">
+                <h2 class="section-title">Quick Actions</h2>
+                <div class="actions-grid">
                     <a href="updates.html" class="action-card">
-                        <div class="action-icon">📢</div>
-                        <h3>Updates</h3>
-                        <p>Check latest announcements</p>
+                        <div class="action-icon primary">📢</div>
+                        <div class="action-content">
+                            <h3>Updates</h3>
+                            <p>Check latest announcements from admins</p>
+                        </div>
+                        <div class="action-arrow">→</div>
                     </a>
                     <a href="members.html" class="action-card">
-                        <div class="action-icon">👥</div>
-                        <h3>Members</h3>
-                        <p>View all team members</p>
+                        <div class="action-icon success">👥</div>
+                        <div class="action-content">
+                            <h3>Members</h3>
+                            <p>Browse all team members and profiles</p>
+                        </div>
+                        <div class="action-arrow">→</div>
                     </a>
                     <a href="profile.html" class="action-card">
-                        <div class="action-icon">👤</div>
-                        <h3>Profile</h3>
-                        <p>Manage your profile</p>
+                        <div class="action-icon warning">👤</div>
+                        <div class="action-content">
+                            <h3>Profile</h3>
+                            <p>Manage your profile and settings</p>
+                        </div>
+                        <div class="action-arrow">→</div>
                     </a>
                     <a href="rules.html" class="action-card">
-                        <div class="action-icon">📜</div>
-                        <h3>Rules</h3>
-                        <p>Read community guidelines</p>
+                        <div class="action-icon info">📜</div>
+                        <div class="action-content">
+                            <h3>Rules</h3>
+                            <p>Read community guidelines</p>
+                        </div>
+                        <div class="action-arrow">→</div>
                     </a>
                 </div>
-            </div>
+            </section>
 
-            <div class="recent-updates">
-                <h2>Recent Updates</h2>
-                <div id="updatesList" class="updates-list">
-                    <!-- Updates will be loaded here -->
+            <!-- Recent Updates -->
+            <section class="updates-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Updates</h2>
+                    <a href="updates.html" class="view-all">View All →</a>
                 </div>
+                <div class="updates-list" id="updatesList">
+                    <div class="loading-updates">
+                        <div class="loading-spinner"></div>
+                        <p>Loading updates...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Quick Access -->
+            <div id="adminQuickAccess" class="hidden">
+                <section class="admin-section">
+                    <h2 class="section-title">Admin Tools</h2>
+                    <div class="admin-grid">
+                        <a href="admin-logs.html" class="admin-card">
+                            <div class="admin-icon">📋</div>
+                            <h3>View Logs</h3>
+                            <p>Monitor user activity and applications</p>
+                        </a>
+                        <a href="admin-kick.html" class="admin-card">
+                            <div class="admin-icon">⚡</div>
+                            <h3>Manage Users</h3>
+                            <p>Kick or unban community members</p>
+                        </a>
+                        <a href="updates.html" class="admin-card">
+                            <div class="admin-icon">📢</div>
+                            <h3>Post Update</h3>
+                            <p>Share announcements with members</p>
+                        </a>
+                    </div>
+                </section>
             </div>
         </div>
     </main>
 
     <!-- Navigation Component -->
     <div id="navigation"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Loading...</p>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -78,13 +174,13 @@
     <script src="js/home.js"></script>
     <script>
         // Load components
-        fetch('components/header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header').innerHTML = data);
-        
-        fetch('components/navigation.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('navigation').innerHTML = data);
+        Promise.all([
+            fetch('components/header.html').then(r => r.text()),
+            fetch('components/navigation.html').then(r => r.text())
+        ]).then(([header, navigation]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('navigation').innerHTML = navigation;
+        });
     </script>
 </body>
 </html>
