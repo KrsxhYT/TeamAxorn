@@ -1,0 +1,249 @@
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .legal-container {
+        flex-direction: column;
+    }
+    
+    .legal-sidebar {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.8rem;
+    }
+    
+    .main-content {
+        padding: 1rem;
+        padding-bottom: 80px;
+    }
+    
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .members-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .legal-content {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .auth-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .main-header {
+        padding: 0.8rem;
+    }
+    
+    .main-content {
+        padding: 0.8rem;
+        padding-bottom: 80px;
+    }
+    
+    .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .card {
+        padding: 1rem;
+    }
+    
+    .profile-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .stat {
+        text-align: center;
+    }
+    
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bottom-nav {
+        padding: 0.6rem 0;
+    }
+    
+    .nav-item {
+        font-size: 0.7rem;
+    }
+    
+    .nav-icon {
+        font-size: 1rem;
+    }
+    
+    .update-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .update-avatar {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .members-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+    
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1201px) {
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo {
+        font-weight: 600;
+    }
+    
+    .btn-primary, .btn-secondary {
+        border-width: 1.5px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .bottom-nav,
+    .main-header {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 0;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dark-bg: #121212;
+        --card-bg: #1e1e1e;
+        --text-primary: #ffffff;
+        --text-secondary: #b0b0b0;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Mobile landscape */
+@media (max-height: 500px) and (orientation: landscape) {
+    .auth-page {
+        padding: 1rem 0;
+    }
+    
+    .auth-container {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .bottom-nav {
+        padding: 0.5rem 0;
+    }
+}
+
+/* Additional responsive utilities */
+.hidden-mobile {
+    display: block;
+}
+
+.hidden-desktop {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .hidden-mobile {
+        display: none;
+    }
+    
+    .hidden-desktop {
+        display: block;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .btn-primary, .btn-secondary, .nav-item {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .menu-btn {
+        padding: 12px;
+    }
+}
+
+/* Foldable devices */
+@media (max-width: 350px) {
+    .logo {
+        font-size: 1.3rem;
+    }
+    
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .auth-container {
+        padding: 1rem;
+    }
+}
