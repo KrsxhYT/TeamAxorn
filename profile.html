@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team AXORN - Profile</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Component -->
+    <div id="header"></div>
+
+    <main class="main-content">
+        <div class="profile-container">
+            <!-- Profile View -->
+            <div id="profileView">
+                <div class="profile-header">
+                    <div class="profile-avatar-section">
+                        <div class="profile-avatar">
+                            <img src="" alt="Profile" id="profileAvatar" onerror="this.style.display='none'">
+                            <div class="avatar-fallback" id="avatarFallback">TA</div>
+                            <div class="avatar-overlay">
+                                <button class="avatar-edit-btn" onclick="openEditProfile()">
+                                    ✏️ Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-primary" onclick="openEditProfile()">
+                                ✏️ Edit Profile
+                            </button>
+                            <button class="btn btn-secondary" onclick="shareProfile()">
+                                🔗 Share Profile
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1 class="profile-name" id="profileName">Loading...</h1>
+                        <div class="profile-username" id="profileUsername">@username</div>
+                        <div class="profile-tag" id="profileTag">Member of TEAM AXORN</div>
+                        
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-number" id="followersCount">0</span>
+                                <span class="stat-label">Followers</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" id="followingCount">0</span>
+                                <span class="stat-label">Following</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" id="postsCount">0</span>
+                                <span class="stat-label">Posts</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-bio" id="profileBio">
+                            No bio yet. Tell everyone about yourself!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-details">
+                    <div class="detail-section">
+                        <h3 class="section-title">Contact Information</h3>
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">Email:</span>
+                                <span class="detail-value" id="profileEmail">loading...</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Phone:</span>
+                                <span class="detail-value" id="profilePhone">Not provided</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Member Since:</span>
+                                <span class="detail-value" id="joinDate">loading...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-section">
+                        <h3 class="section-title">Social Links</h3>
+                        <div class="social-links" id="socialLinks">
+                            <div class="no-links">No social links added yet</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions-full">
+                    <button class="btn btn-secondary" onclick="logout()">
+                        🚪 Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Edit Profile View -->
+            <div id="editProfileView" class="hidden">
+                <div class="edit-profile-header">
+                    <h2>Edit Profile</h2>
+                    <button class="btn btn-secondary" onclick="closeEditProfile()">
+                        ← Back to Profile
+                    </button>
+                </div>
+
+                <form id="editProfileForm" class="edit-profile-form">
+                    <div class="avatar-upload-section">
+                        <h3 class="section-title">Profile Picture</h3>
+                        <div class="avatar-upload">
+                            <div class="avatar-preview">
+                                <img src="" alt="Preview" id="avatarPreview" onerror="this.style.display='none'">
+                                <div class="avatar-fallback" id="avatarPreviewFallback">TA</div>
+                            </div>
+                            <div class="upload-controls">
+                                <input type="file" id="avatarInput" accept="image/*" class="hidden">
+                                <button type="button" class="btn btn-secondary" onclick="document.getElementById('avatarInput').click()">
+                                    📁 Upload Photo
+                                </button>
+                                <button type="button" class="btn btn-secondary" onclick="removeAvatar()">
+                                    🗑️ Remove
+                                </button>
+                            </div>
+                            <div class="upload-hint">
+                                Recommended: Square image, 500x500px, max 5MB
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Basic Information</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <input type="text" id="editName" required class="form-input">
+                                <label for="editName" class="form-label">Full Name</label>
+                                <div class="input-icon">👤</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <input type="text" id="editUsername" required class="form-input">
+                                <label for="editUsername" class="form-label">Username</label>
+                                <div class="input-icon">@</div>
+                                <div class="input-hint">Username must be unique</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <textarea id="editBio" rows="3" class="form-input" placeholder="Tell everyone about yourself..."></textarea>
+                                <label for="editBio" class="form-label">Bio</label>
+                                <div class="input-hint">Max 200 characters</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Contact Information</h3>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <input type="email" id="editEmail" required readonly class="form-input">
+                                <label for="editEmail" class="form-label">Email</label>
+                                <div class="input-icon">✉️</div>
+                                <div class="input-hint">Email cannot be changed</div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <input type="tel" id="editPhone" class="form-input">
+                                <label for="editPhone" class="form-label">Phone Number</label>
+                                <div class="input-icon">📱</div>
+                                <div class="input-hint">Optional - for admin contact</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeEditProfile()">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Save Changes</span>
+                            <div class="btn-loader hidden"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Navigation Component -->
+    <div id="navigation"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Loading profile...</p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+    <script>
+        Promise.all([
+            fetch('components/header.html').then(r => r.text()),
+            fetch('components/navigation.html').then(r => r.text())
+        ]).then(([header, navigation]) => {
+            document.getElementById('header').innerHTML = header;
+            document.getElementById('navigation').innerHTML = navigation;
+        });
+    </script>
+</body>
+</html>
