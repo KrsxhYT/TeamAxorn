@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TEAM AXORN - Login</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <div class="team-header">
+        <div class="team-logo">TEAM AXORN</div>
+        <div class="team-tagline">Join The Elite Community</div>
+    </div>
+
     <div class="section">
         <div class="container">
             <div class="row full-height justify-content-center">
@@ -31,7 +37,10 @@
                                                 <input type="password" class="form-style" placeholder="Your Password" id="login-password" autocomplete="off">
                                                 <i class="input-icon uil uil-lock-alt"></i>
                                             </div>
-                                            <button class="btn mt-4" onclick="login()">Login</button>
+                                            <button class="btn mt-4" id="login-btn">Login</button>
+                                            <div id="login-loading" class="loading">
+                                                <div class="spinner"></div>
+                                            </div>
                                             <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
                                         </div>
                                     </div>
@@ -58,7 +67,10 @@
                                                 <input type="password" class="form-style" placeholder="Your Password" id="signup-password" autocomplete="off">
                                                 <i class="input-icon uil uil-lock-alt"></i>
                                             </div>
-                                            <button class="btn mt-4" onclick="signup()">Sign Up</button>
+                                            <button class="btn mt-4" id="signup-btn">Sign Up</button>
+                                            <div id="signup-loading" class="loading">
+                                                <div class="spinner"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
