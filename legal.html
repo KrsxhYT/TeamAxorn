@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM AXORN - Legal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header class="main-header">
+        <button class="menu-btn" onclick="history.back()">←</button>
+        <h1 class="logo">TEAM AXORN</h1>
+        <div class="header-placeholder"></div>
+    </header>
+
+    <main class="main-content">
+        <div class="legal-container">
+            <div class="legal-sidebar">
+                <h3>Legal & Information</h3>
+                <div class="legal-links">
+                    <a href="#faq" class="legal-link active" data-section="faq">FAQ</a>
+                    <a href="#privacy" class="legal-link" data-section="privacy">Privacy Policy</a>
+                    <a href="#help" class="legal-link" data-section="help">Help & Support</a>
+                    <a href="#terms" class="legal-link" data-section="terms">Terms & Conditions</a>
+                    <a href="#about" class="legal-link" data-section="about">About Us</a>
+                </div>
+            </div>
+
+            <div class="legal-content">
+                <div id="faq" class="legal-section active">
+                    <h2 class="legal-title">Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <h4>What is TEAM AXORN?</h4>
+                            <p>TEAM AXORN is a community of like-minded individuals focused on [purpose of the team]. We work together to achieve common goals and support each other.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>How can I join TEAM AXORN?</h4>
+                            <p>You can join by signing up on our website and completing the application process. Your application will be reviewed by our admin team.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>What are the requirements to join?</h4>
+                            <p>You need to have [specific requirements], agree to follow our rules, and be an active participant in the community.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Can I change my username?</h4>
+                            <p>Username changes are allowed but limited. Contact admins for username change requests.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="privacy" class="legal-section">
+                    <h2 class="legal-title">Privacy Policy</h2>
+                    <div class="legal-text">
+                        <p>Last updated: [Date]</p>
+                        
+                        <h4>Information We Collect</h4>
+                        <p>We collect information you provide directly to us, including:</p>
+                        <ul>
+                            <li>Name and contact information</li>
+                            <li>Username and profile information</li>
+                            <li>Communication preferences</li>
+                            <li>Any other information you choose to provide</li>
+                        </ul>
+                        
+                        <h4>How We Use Your Information</h4>
+                        <p>We use the information we collect to:</p>
+                        <ul>
+                            <li>Provide, maintain, and improve our services</li>
+                            <li>Communicate with you about updates</li>
+                            <li>Monitor and analyze trends and usage</li>
+                            <li>Detect, prevent, and address technical issues</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="help" class="legal-section">
+                    <h2 class="legal-title">Help & Support</h2>
+                    <div class="legal-text">
+                        <h4>Getting Help</h4>
+                        <p>If you need assistance with TEAM AXORN, here are the ways you can get help:</p>
+                        
+                        <h4>Contact Admins</h4>
+                        <p>Reach out to our admin team through:</p>
+                        <ul>
+                            <li>Direct message to @Krsxh or @Lord</li>
+                            <li>Team group chat</li>
+                            <li>Official email: support@teamaxorn.com</li>
+                        </ul>
+                        
+                        <h4>Common Issues</h4>
+                        <div class="help-items">
+                            <div class="help-item">
+                                <strong>Login problems:</strong> Reset your password or contact admin
+                            </div>
+                            <div class="help-item">
+                                <strong>Application status:</strong> Check your profile or contact admin
+                            </div>
+                            <div class="help-item">
+                                <strong>Technical issues:</strong> Clear cache and try again
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="terms" class="legal-section">
+                    <h2 class="legal-title">Terms & Conditions</h2>
+                    <div class="legal-text">
+                        <p>By accessing and using TEAM AXORN services, you agree to these terms:</p>
+                        
+                        <h4>Membership Terms</h4>
+                        <ul>
+                            <li>You must be at least 13 years old to use our services</li>
+                            <li>You are responsible for maintaining account security</li>
+                            <li>You agree to follow all team rules and guidelines</li>
+                        </ul>
+                        
+                        <h4>Prohibited Activities</h4>
+                        <ul>
+                            <li>Violating any laws or regulations</li>
+                            <li>Harassing other members</li>
+                            <li>Sharing inappropriate content</li>
+                            <li>Attempting to disrupt services</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="about" class="legal-section">
+                    <h2 class="legal-title">About TEAM AXORN</h2>
+                    <div class="legal-text">
+                        <h4>Our Mission</h4>
+                        <p>TEAM AXORN is dedicated to [team mission and purpose]. We strive to create a positive and supportive community for all members.</p>
+                        
+                        <h4>Our Team</h4>
+                        <p>TEAM AXORN is led by experienced administrators and leaders who ensure the community runs smoothly and fairly.</p>
+                        
+                        <h4>Contact Information</h4>
+                        <p>For general inquiries: info@teamaxorn.com</p>
+                        <p>For support: support@teamaxorn.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Handle legal section navigation
+        document.querySelectorAll('.legal-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Update active link
+                document.querySelectorAll('.legal-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show selected section
+                const sectionId = this.getAttribute('data-section');
+                document.querySelectorAll('.legal-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+        
+        // Handle URL parameters for direct section access
+        const urlParams = new URLSearchParams(window.location.search);
+        const section = urlParams.get('section');
+        if (section) {
+            const sectionLink = document.querySelector(`.legal-link[data-section="${section}"]`);
+            if (sectionLink) {
+                sectionLink.click();
+            }
+        }
+    </script>
+</body>
+</html>
