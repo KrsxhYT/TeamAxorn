@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team AXORN - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <!-- Header Component -->
+    <div id="header"></div>
+
+    <main class="main-content">
+        <div class="dashboard">
+            <div class="welcome-section">
+                <h1>Welcome to Team AXORN</h1>
+                <p>Elite community of professionals</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Members</h3>
+                    <p class="stat-number" id="totalMembers">20</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Online Now</h3>
+                    <p class="stat-number" id="onlineMembers">12</p>
+                </div>
+                <div class="stat-card">
+                    <h3>New Updates</h3>
+                    <p class="stat-number" id="newUpdates">3</p>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-grid">
+                    <a href="updates.html" class="action-card">
+                        <div class="action-icon">📢</div>
+                        <h3>Updates</h3>
+                        <p>Check latest announcements</p>
+                    </a>
+                    <a href="members.html" class="action-card">
+                        <div class="action-icon">👥</div>
+                        <h3>Members</h3>
+                        <p>View all team members</p>
+                    </a>
+                    <a href="profile.html" class="action-card">
+                        <div class="action-icon">👤</div>
+                        <h3>Profile</h3>
+                        <p>Manage your profile</p>
+                    </a>
+                    <a href="rules.html" class="action-card">
+                        <div class="action-icon">📜</div>
+                        <h3>Rules</h3>
+                        <p>Read community guidelines</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="recent-updates">
+                <h2>Recent Updates</h2>
+                <div id="updatesList" class="updates-list">
+                    <!-- Updates will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Navigation Component -->
+    <div id="navigation"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/home.js"></script>
+    <script>
+        // Load components
+        fetch('components/header.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+        
+        fetch('components/navigation.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('navigation').innerHTML = data);
+    </script>
+</body>
+</html>
