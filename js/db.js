@@ -11,7 +11,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+try {
+    firebase.initializeApp(firebaseConfig);
+    console.log("Firebase initialized successfully");
+} catch (error) {
+    console.error("Firebase initialization error:", error);
+}
+
 const auth = firebase.auth();
 const database = firebase.database();
 
@@ -61,6 +67,7 @@ function canSendUpdates(username) {
 const usersRef = database.ref('users');
 const applicationsRef = database.ref('applications');
 const updatesRef = database.ref('updates');
+const suspendedRef = database.ref('suspended');
 
 // User management functions
 function createUser(userId, userData) {
@@ -99,4 +106,17 @@ function postUpdate(updateData) {
 
 function getUpdates() {
     return updatesRef.once('value');
+}
+
+// Suspension functions
+function suspendUser(username) {
+    return suspendedRef.child(username).set(true);
+}
+
+function unsuspendUser(username) {
+    return suspendedRef.child(username).remove();
+}
+
+function isSuspended(username) {
+    return suspendedRef.child(username).once('value');
 }
