@@ -3,103 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team AXORN - Updates</title>
+    <title>TEAM AXORN - Updates</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/updates.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- Header Component -->
-    <div id="header"></div>
+    <header class="main-header">
+        <button class="menu-btn" onclick="history.back()">←</button>
+        <h1 class="logo">TEAM AXORN</h1>
+        <div class="header-placeholder"></div>
+    </header>
 
     <main class="main-content">
-        <div class="updates-container">
-            <!-- Admin Info Section -->
-            <div class="admin-info-card">
-                <div class="admin-avatar">
-                    <div class="avatar-icon">⚡</div>
-                </div>
-                <div class="admin-details">
-                    <h1>Team AXORN</h1>
-                    <div class="admin-stats">
-                        <div class="stat">
-                            <span class="stat-number" id="totalMembersCount">20</span>
-                            <span class="stat-label">Total Members</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" id="onlineMembersCount">12</span>
-                            <span class="stat-label">Online Now</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Update Form (Admin Only) -->
-            <div id="updateFormContainer" class="hidden">
-                <div class="update-form-card">
-                    <h3 class="form-title">Post New Update</h3>
-                    <form id="updateForm">
-                        <div class="input-group">
-                            <textarea id="updateMessage" rows="4" placeholder="Write your announcement..." required class="form-input"></textarea>
-                            <div class="input-hint">Markdown is supported</div>
-                        </div>
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary" onclick="clearUpdateForm()">
-                                Clear
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                <span class="btn-text">Post Update</span>
-                                <div class="btn-loader hidden"></div>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Updates List -->
-            <div class="updates-section">
-                <div class="section-header">
-                    <h2 class="section-title">Community Updates</h2>
-                    <div class="section-actions">
-                        <button class="btn btn-secondary btn-sm" onclick="refreshUpdates()">
-                            🔄 Refresh
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="updates-list" id="updatesList">
-                    <div class="loading-updates">
-                        <div class="loading-spinner"></div>
-                        <p>Loading updates...</p>
+        <div class="updates-header">
+            <div class="team-info">
+                <div class="team-avatar">AX</div>
+                <div class="team-details">
+                    <h2>TEAM AXORN</h2>
+                    <div class="team-stats">
+                        <span id="total-members-count">20</span> Members
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="updates-container">
+            <div id="updates-list">
+                <!-- Updates will be loaded here dynamically -->
+                <div class="update-card">
+                    <div class="update-header">
+                        <div class="update-avatar admin-krsxh">K</div>
+                        <div>
+                            <div class="update-author">
+                                @Krsxh 
+                                <span class="admin-badge">Semxy Owner</span>
+                                <span class="verified-badge">✓</span>
+                            </div>
+                            <div class="update-time">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="update-content">
+                        Welcome to TEAM AXORN! This is our official updates channel. Important announcements will be posted here.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Update Form (Visible only to admins) -->
+        <div id="admin-update-form" class="card" style="display: none;">
+            <h3 class="card-title">Post Update</h3>
+            <form id="new-update-form">
+                <div class="form-group">
+                    <textarea id="update-content" class="form-control" rows="4" placeholder="Write your update here..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Post Update</button>
+            </form>
+        </div>
     </main>
 
-    <!-- Navigation Component -->
-    <div id="navigation"></div>
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="updates.html" class="nav-item active">
+            <span class="nav-icon">📢</span>
+            <span>Updates</span>
+        </a>
+        <a href="rules.html" class="nav-item">
+            <span class="nav-icon">📜</span>
+            <span>Rules</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <span class="nav-icon">👤</span>
+            <span>Profile</span>
+        </a>
+        <a href="members.html" class="nav-item">
+            <span class="nav-icon">👥</span>
+            <span>Members</span>
+        </a>
+    </nav>
 
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay hidden">
-        <div class="loading-spinner"></div>
-        <p>Loading...</p>
-    </div>
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/updates.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        Promise.all([
-            fetch('components/header.html').then(r => r.text()),
-            fetch('components/navigation.html').then(r => r.text())
-        ]).then(([header, navigation]) => {
-            document.getElementById('header').innerHTML = header;
-            document.getElementById('navigation').innerHTML = navigation;
+        // Load updates
+        document.addEventListener('DOMContentLoaded', function() {
+            loadUpdates();
+            checkAdminStatus();
+        });
+        
+        function loadUpdates() {
+            getUpdates().then((snapshot) => {
+                const updatesList = document.getElementById('updates-list');
+                updatesList.innerHTML = '';
+                
+                snapshot.forEach((childSnapshot) => {
+                    const update = childSnapshot.val();
+                    const updateElement = createUpdateElement(update);
+                    updatesList.appendChild(updateElement);
+                });
+            });
+        }
+        
+        function createUpdateElement(update) {
+            const updateDiv = document.createElement('div');
+            updateDiv.className = 'update-card';
+            
+            const adminInfo = getAdminInfo(update.author);
+            const isVerified = adminInfo ? adminInfo.verified : false;
+            const tag = adminInfo ? adminInfo.tag : 'Member';
+            
+            updateDiv.innerHTML = `
+                <div class="update-header">
+                    <div class="update-avatar ${adminInfo ? 'admin-' + update.author.toLowerCase() : ''}">
+                        ${update.author.charAt(0)}
+                    </div>
+                    <div>
+                        <div class="update-author">
+                            @${update.author}
+                            ${adminInfo ? `<span class="admin-badge">${tag}</span>` : ''}
+                            ${isVerified ? '<span class="verified-badge">✓</span>' : ''}
+                        </div>
+                        <div class="update-time">${formatTime(update.timestamp)}</div>
+                    </div>
+                </div>
+                <div class="update-content">${update.content}</div>
+            `;
+            
+            return updateDiv;
+        }
+        
+        function formatTime(timestamp) {
+            // Implement time formatting
+            return new Date(timestamp).toLocaleDateString();
+        }
+        
+        function checkAdminStatus() {
+            const user = firebase.auth().currentUser;
+            if (user) {
+                getUser(user.uid).then((snapshot) => {
+                    const userData = snapshot.val();
+                    if (userData && canSendUpdates(userData.username)) {
+                        document.getElementById('admin-update-form').style.display = 'block';
+                    }
+                });
+            }
+        }
+        
+        // Handle new update form
+        document.getElementById('new-update-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const user = firebase.auth().currentUser;
+            if (user) {
+                getUser(user.uid).then((snapshot) => {
+                    const userData = snapshot.val();
+                    const content = document.getElementById('update-content').value;
+                    
+                    const updateData = {
+                        author: userData.username,
+                        content: content,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    postUpdate(updateData).then(() => {
+                        document.getElementById('update-content').value = '';
+                        loadUpdates();
+                    });
+                });
+            }
         });
     </script>
 </body>
