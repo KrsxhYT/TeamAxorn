@@ -3,212 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team AXORN - Profile</title>
+    <title>TEAM AXORN - Profile</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- Header Component -->
-    <div id="header"></div>
+    <header class="main-header">
+        <button class="menu-btn" onclick="history.back()">←</button>
+        <h1 class="logo">TEAM AXORN</h1>
+        <div class="header-placeholder"></div>
+    </header>
 
     <main class="main-content">
         <div class="profile-container">
-            <!-- Profile View -->
-            <div id="profileView">
-                <div class="profile-header">
-                    <div class="profile-avatar-section">
-                        <div class="profile-avatar">
-                            <img src="" alt="Profile" id="profileAvatar" onerror="this.style.display='none'">
-                            <div class="avatar-fallback" id="avatarFallback">TA</div>
-                            <div class="avatar-overlay">
-                                <button class="avatar-edit-btn" onclick="openEditProfile()">
-                                    ✏️ Edit
-                                </button>
-                            </div>
-                        </div>
-                        <div class="profile-actions">
-                            <button class="btn btn-primary" onclick="openEditProfile()">
-                                ✏️ Edit Profile
-                            </button>
-                            <button class="btn btn-secondary" onclick="shareProfile()">
-                                🔗 Share Profile
-                            </button>
-                        </div>
+            <div class="profile-header">
+                <img id="profile-picture" src="" alt="Profile" class="profile-pic">
+                <div class="profile-tag">Member of TEAM AXORN</div>
+                <h2 id="profile-name" class="profile-name">Loading...</h2>
+                <div id="profile-username" class="profile-username">@username</div>
+                
+                <div class="profile-stats">
+                    <div class="stat">
+                        <div id="followers-count" class="stat-value">0</div>
+                        <div class="stat-label">Followers</div>
                     </div>
-
-                    <div class="profile-info">
-                        <h1 class="profile-name" id="profileName">Loading...</h1>
-                        <div class="profile-username" id="profileUsername">@username</div>
-                        <div class="profile-tag" id="profileTag">Member of TEAM AXORN</div>
-                        
-                        <div class="profile-stats">
-                            <div class="stat">
-                                <span class="stat-number" id="followersCount">0</span>
-                                <span class="stat-label">Followers</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" id="followingCount">0</span>
-                                <span class="stat-label">Following</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" id="postsCount">0</span>
-                                <span class="stat-label">Posts</span>
-                            </div>
-                        </div>
-
-                        <div class="profile-bio" id="profileBio">
-                            No bio yet. Tell everyone about yourself!
-                        </div>
+                    <div class="stat">
+                        <div id="following-count" class="stat-value">0</div>
+                        <div class="stat-label">Following</div>
                     </div>
-                </div>
-
-                <div class="profile-details">
-                    <div class="detail-section">
-                        <h3 class="section-title">Contact Information</h3>
-                        <div class="detail-grid">
-                            <div class="detail-item">
-                                <span class="detail-label">Email:</span>
-                                <span class="detail-value" id="profileEmail">loading...</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Phone:</span>
-                                <span class="detail-value" id="profilePhone">Not provided</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Member Since:</span>
-                                <span class="detail-value" id="joinDate">loading...</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h3 class="section-title">Social Links</h3>
-                        <div class="social-links" id="socialLinks">
-                            <div class="no-links">No social links added yet</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="profile-actions-full">
-                    <button class="btn btn-secondary" onclick="logout()">
-                        🚪 Logout
-                    </button>
                 </div>
             </div>
 
-            <!-- Edit Profile View -->
-            <div id="editProfileView" class="hidden">
-                <div class="edit-profile-header">
-                    <h2>Edit Profile</h2>
-                    <button class="btn btn-secondary" onclick="closeEditProfile()">
-                        ← Back to Profile
-                    </button>
+            <div class="profile-actions">
+                <button class="btn-secondary" onclick="openEditProfile()">Edit Profile</button>
+                <button class="btn-secondary" onclick="shareProfile()">Share Profile</button>
+                <button class="btn-secondary logout-btn" onclick="logout()">Log Out</button>
+            </div>
+
+            <div class="profile-info card">
+                <h3 class="card-title">Profile Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span id="profile-email" class="info-value">loading...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Member Since:</span>
+                        <span id="member-since" class="info-value">loading...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status:</span>
+                        <span class="info-value active-status">Active Member</span>
+                    </div>
                 </div>
-
-                <form id="editProfileForm" class="edit-profile-form">
-                    <div class="avatar-upload-section">
-                        <h3 class="section-title">Profile Picture</h3>
-                        <div class="avatar-upload">
-                            <div class="avatar-preview">
-                                <img src="" alt="Preview" id="avatarPreview" onerror="this.style.display='none'">
-                                <div class="avatar-fallback" id="avatarPreviewFallback">TA</div>
-                            </div>
-                            <div class="upload-controls">
-                                <input type="file" id="avatarInput" accept="image/*" class="hidden">
-                                <button type="button" class="btn btn-secondary" onclick="document.getElementById('avatarInput').click()">
-                                    📁 Upload Photo
-                                </button>
-                                <button type="button" class="btn btn-secondary" onclick="removeAvatar()">
-                                    🗑️ Remove
-                                </button>
-                            </div>
-                            <div class="upload-hint">
-                                Recommended: Square image, 500x500px, max 5MB
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3 class="section-title">Basic Information</h3>
-                        <div class="form-grid">
-                            <div class="input-group">
-                                <input type="text" id="editName" required class="form-input">
-                                <label for="editName" class="form-label">Full Name</label>
-                                <div class="input-icon">👤</div>
-                            </div>
-                            
-                            <div class="input-group">
-                                <input type="text" id="editUsername" required class="form-input">
-                                <label for="editUsername" class="form-label">Username</label>
-                                <div class="input-icon">@</div>
-                                <div class="input-hint">Username must be unique</div>
-                            </div>
-                            
-                            <div class="input-group">
-                                <textarea id="editBio" rows="3" class="form-input" placeholder="Tell everyone about yourself..."></textarea>
-                                <label for="editBio" class="form-label">Bio</label>
-                                <div class="input-hint">Max 200 characters</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3 class="section-title">Contact Information</h3>
-                        <div class="form-grid">
-                            <div class="input-group">
-                                <input type="email" id="editEmail" required readonly class="form-input">
-                                <label for="editEmail" class="form-label">Email</label>
-                                <div class="input-icon">✉️</div>
-                                <div class="input-hint">Email cannot be changed</div>
-                            </div>
-                            
-                            <div class="input-group">
-                                <input type="tel" id="editPhone" class="form-input">
-                                <label for="editPhone" class="form-label">Phone Number</label>
-                                <div class="input-icon">📱</div>
-                                <div class="input-hint">Optional - for admin contact</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" onclick="closeEditProfile()">
-                            Cancel
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            <span class="btn-text">Save Changes</span>
-                            <div class="btn-loader hidden"></div>
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     </main>
 
-    <!-- Navigation Component -->
-    <div id="navigation"></div>
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="edit-profile-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeEditProfile()">×</button>
+            <h3>Edit Profile</h3>
+            
+            <form id="edit-profile-form">
+                <div class="form-group">
+                    <label class="form-label">Profile Picture</label>
+                    <div class="pfp-upload">
+                        <img id="edit-pfp-preview" src="" alt="Preview" class="pfp-preview">
+                        <input type="file" id="pfp-upload" accept="image/*" class="file-input">
+                        <label for="pfp-upload" class="btn-secondary">Choose Image</label>
+                    </div>
+                </div>
 
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="loading-overlay hidden">
-        <div class="loading-spinner"></div>
-        <p>Loading profile...</p>
+                <div class="form-group">
+                    <label for="edit-name" class="form-label">Full Name</label>
+                    <input type="text" id="edit-name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-username" class="form-label">Username</label>
+                    <input type="text" id="edit-username" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-email" class="form-label">Email</label>
+                    <input type="email" id="edit-email" class="form-control" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <button type="button" class="btn-secondary" onclick="closeEditProfile()">Cancel</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/profile.js"></script>
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-item">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="updates.html" class="nav-item">
+            <span class="nav-icon">📢</span>
+            <span>Updates</span>
+        </a>
+        <a href="rules.html" class="nav-item">
+            <span class="nav-icon">📜</span>
+            <span>Rules</span>
+        </a>
+        <a href="profile.html" class="nav-item active">
+            <span class="nav-icon">👤</span>
+            <span>Profile</span>
+        </a>
+        <a href="members.html" class="nav-item">
+            <span class="nav-icon">👥</span>
+            <span>Members</span>
+        </a>
+    </nav>
+
+    <script src="js/db.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        Promise.all([
-            fetch('components/header.html').then(r => r.text()),
-            fetch('components/navigation.html').then(r => r.text())
-        ]).then(([header, navigation]) => {
-            document.getElementById('header').innerHTML = header;
-            document.getElementById('navigation').innerHTML = navigation;
+        let currentUserData = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProfileData();
+        });
+        
+        function loadProfileData() {
+            const user = firebase.auth().currentUser;
+            if (user) {
+                getUser(user.uid).then((snapshot) => {
+                    currentUserData = snapshot.val();
+                    if (currentUserData) {
+                        document.getElementById('profile-name').textContent = currentUserData.name;
+                        document.getElementById('profile-username').textContent = '@' + currentUserData.username;
+                        document.getElementById('profile-email').textContent = currentUserData.email;
+                        document.getElementById('followers-count').textContent = currentUserData.followers || 0;
+                        document.getElementById('following-count').textContent = currentUserData.following || 0;
+                        document.getElementById('member-since').textContent = new Date(currentUserData.createdAt).toLocaleDateString();
+                        
+                        if (currentUserData.profilePic) {
+                            document.getElementById('profile-picture').src = currentUserData.profilePic;
+                            document.getElementById('edit-pfp-preview').src = currentUserData.profilePic;
+                        }
+                        
+                        // Set edit form values
+                        document.getElementById('edit-name').value = currentUserData.name;
+                        document.getElementById('edit-username').value = currentUserData.username;
+                        document.getElementById('edit-email').value = currentUserData.email;
+                    }
+                });
+            }
+        }
+        
+        function openEditProfile() {
+            document.getElementById('edit-profile-modal').classList.add('active');
+        }
+        
+        function closeEditProfile() {
+            document.getElementById('edit-profile-modal').classList.remove('active');
+        }
+        
+        function shareProfile() {
+            const username = currentUserData.username;
+            const profileUrl = `team-axorn.vercel.app/profile/${username}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `${currentUserData.name}'s Profile`,
+                    text: `Check out ${currentUserData.name}'s profile on TEAM AXORN`,
+                    url: profileUrl
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(profileUrl).then(() => {
+                    alert('Profile link copied to clipboard!');
+                });
+            }
+        }
+        
+        function logout() {
+            firebase.auth().signOut().then(() => {
+                window.location.href = 'index.html';
+            });
+        }
+        
+        // Handle profile picture upload
+        document.getElementById('pfp-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64 = e.target.result;
+                    document.getElementById('edit-pfp-preview').src = base64;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Handle edit profile form
+        document.getElementById('edit-profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const user = firebase.auth().currentUser;
+            if (user) {
+                const updates = {
+                    name: document.getElementById('edit-name').value,
+                    username: document.getElementById('edit-username').value,
+                    email: document.getElementById('edit-email').value
+                };
+                
+                // Update profile picture if changed
+                const pfpPreview = document.getElementById('edit-pfp-preview').src;
+                if (pfpPreview && pfpPreview !== document.getElementById('profile-picture').src) {
+                    updates.profilePic = pfpPreview;
+                }
+                
+                updateUser(user.uid, updates).then(() => {
+                    closeEditProfile();
+                    loadProfileData(); // Reload profile data
+                    alert('Profile updated successfully!');
+                });
+            }
         });
     </script>
 </body>
