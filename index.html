@@ -3,158 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team AXORN - Login</title>
+    <title>TEAM AXORN - Login</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body class="auth-page">
-    <div class="particles-container" id="particles"></div>
-    
     <div class="auth-container">
-        <div class="auth-card">
-            <!-- Logo Section -->
-            <div class="logo-section">
-                <div class="logo-graphic">
-                    <div class="logo-icon">⚡</div>
-                </div>
-                <h1 class="logo-text">TEAM AXORN</h1>
-                <p class="tagline">Elite Community Platform</p>
-            </div>
-
-            <!-- Auth Forms -->
-            <div class="auth-forms">
-                <!-- Login Form -->
-                <form id="loginForm" class="auth-form active">
-                    <h2 class="form-title">Welcome Back</h2>
-                    <p class="form-subtitle">Sign in to your account</p>
-                    
-                    <div class="input-group">
-                        <input type="email" id="loginEmail" required class="form-input">
-                        <label for="loginEmail" class="form-label">Email Address</label>
-                        <div class="input-icon">✉️</div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="password" id="loginPassword" required class="form-input">
-                        <label for="loginPassword" class="form-label">Password</label>
-                        <div class="input-icon">🔒</div>
-                    </div>
-
-                    <div class="form-options">
-                        <label class="checkbox">
-                            <input type="checkbox" id="rememberMe">
-                            <span class="checkmark"></span>
-                            Remember me
-                        </label>
-                        <a href="#" class="forgot-link">Forgot password?</a>
-                    </div>
-
-                    <button type="submit" class="auth-btn primary">
-                        <span class="btn-text">Sign In</span>
-                        <div class="btn-loader hidden"></div>
-                    </button>
-
-                    <div class="auth-divider">
-                        <span>or continue with</span>
-                    </div>
-
-                    <div class="social-auth">
-                        <button type="button" class="social-btn google">
-                            <span class="social-icon">🔍</span>
-                            Google
-                        </button>
-                        <button type="button" class="social-btn github">
-                            <span class="social-icon">💻</span>
-                            GitHub
-                        </button>
-                    </div>
-
-                    <p class="switch-form-text">
-                        Don't have an account? 
-                        <a href="#" id="showSignup" class="switch-link">Sign up now</a>
-                    </p>
-                </form>
-
-                <!-- Signup Form -->
-                <form id="signupForm" class="auth-form">
-                    <h2 class="form-title">Join Team AXORN</h2>
-                    <p class="form-subtitle">Create your account</p>
-                    
-                    <div class="input-group">
-                        <input type="text" id="signupName" required class="form-input">
-                        <label for="signupName" class="form-label">Full Name</label>
-                        <div class="input-icon">👤</div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="text" id="signupUsername" required class="form-input">
-                        <label for="signupUsername" class="form-label">Username</label>
-                        <div class="input-icon">@</div>
-                        <div class="input-hint">Unique username for your profile</div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="email" id="signupEmail" required class="form-input">
-                        <label for="signupEmail" class="form-label">Email Address</label>
-                        <div class="input-icon">✉️</div>
-                    </div>
-                    
-                    <div class="input-group">
-                        <input type="password" id="signupPassword" required class="form-input">
-                        <label for="signupPassword" class="form-label">Password</label>
-                        <div class="input-icon">🔒</div>
-                        <div class="input-hint">Minimum 8 characters</div>
-                    </div>
-
-                    <div class="input-group">
-                        <input type="password" id="signupConfirmPassword" required class="form-input">
-                        <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
-                        <div class="input-icon">🔒</div>
-                    </div>
-
-                    <div class="form-terms">
-                        <label class="checkbox">
-                            <input type="checkbox" id="acceptTerms" required>
-                            <span class="checkmark"></span>
-                            I agree to the <a href="legal.html#terms">Terms & Conditions</a> and <a href="legal.html#privacy">Privacy Policy</a>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="auth-btn primary">
-                        <span class="btn-text">Create Account</span>
-                        <div class="btn-loader hidden"></div>
-                    </button>
-
-                    <p class="switch-form-text">
-                        Already have an account? 
-                        <a href="#" id="showLogin" class="switch-link">Sign in</a>
-                    </p>
-                </form>
-            </div>
+        <div class="auth-header">
+            <h1 class="logo">TEAM AXORN</h1>
+            <p class="tagline">Join the community</p>
         </div>
-
-        <!-- Loading Overlay -->
-        <div id="loadingOverlay" class="loading-overlay hidden">
-            <div class="loading-spinner"></div>
-            <p>Processing...</p>
+        
+        <div class="auth-tabs">
+            <button class="tab-btn active" id="login-tab">Login</button>
+            <button class="tab-btn" id="signup-tab">Sign Up</button>
+        </div>
+        
+        <form id="login-form" class="auth-form active">
+            <div class="input-group">
+                <input type="email" id="login-email" required>
+                <label for="login-email">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="login-password" required>
+                <label for="login-password">Password</label>
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+        
+        <form id="signup-form" class="auth-form">
+            <div class="input-group">
+                <input type="text" id="signup-name" required>
+                <label for="signup-name">Full Name</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="signup-username" required>
+                <label for="signup-username">Username</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="signup-email" required>
+                <label for="signup-email">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="signup-password" required>
+                <label for="signup-password">Password</label>
+            </div>
+            <button type="submit" class="btn-primary">Sign Up</button>
+        </form>
+        
+        <div class="auth-footer">
+            <p>By continuing, you agree to our <a href="legal.html">Terms & Conditions</a></p>
         </div>
     </div>
-
-    <!-- Notification Container -->
-    <div id="notificationContainer" class="notification-container"></div>
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <script src="js/db.js"></script>
     <script src="js/auth.js"></script>
-    <script src="js/script.js"></script>
-    <script>
-        // Initialize particles background
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticlesBackground();
-        });
-    </script>
 </body>
 </html>
